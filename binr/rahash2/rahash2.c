@@ -14,8 +14,8 @@ static ut64 from = 0LL;
 static ut64 to = 0LL;
 static int incremental = 1;
 static int iterations = 0;
-static int quiet = 0;
-static int linebreak = 0;
+static bool quiet = false;
+static bool linebreak = false;
 static RHashSeed s = {
 	0
 }, *_s = NULL;
@@ -220,11 +220,11 @@ static int do_hash(const char *file, const char *algo, RIO *io, int bsize, int r
 					printf ("%s: ", file);
 				}
 				do_hash_print (ctx, i, dlen, quiet? 'n': rad, ule);
-				if (quiet == 1) {
+				if (quiet == true) {
 					printf (" %s", file);
 				} 
 				if (linebreak) {
-					if (quiet == 1 || (quiet && !rad)) {
+					if (quiet == true || (quiet && !rad)) {
 						printf ("\n");
 					}
 				}
@@ -466,7 +466,7 @@ int main(int argc, char **argv) {
 		case 'D': decrypt = optarg; break;
 		case 'E': encrypt = optarg; break;
 		case 'L': algolist (); return 0;
-		case 'l': linebreak = 1; break;
+		case 'l': linebreak = true; break;
 		case 'e': ule = 1; break;
 		case 'r': rad = 1; break;
 		case 'k': rad = 2; break;
