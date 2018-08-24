@@ -15,7 +15,7 @@ static ut64 to = 0LL;
 static int incremental = 1;
 static int iterations = 0;
 static bool quiet = false;
-static bool linebreak = false;
+static bool linebreak = true;
 static RHashSeed s = {
 	0
 }, *_s = NULL;
@@ -466,7 +466,7 @@ int main(int argc, char **argv) {
 		case 'D': decrypt = optarg; break;
 		case 'E': encrypt = optarg; break;
 		case 'L': algolist (); return 0;
-		case 'l': linebreak = true; break;
+		case 'l': linebreak = false; break;
 		case 'e': ule = 1; break;
 		case 'r': rad = 1; break;
 		case 'k': rad = 2; break;
